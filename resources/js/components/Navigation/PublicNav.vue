@@ -116,7 +116,7 @@ const navLinkClass = computed(() => {
                         class="mb-1 flex items-center space-x-1 text-[11px] text-gray-300 dark:text-gray-100"
                         :class="
                             scrolled || !isHome
-                                ? 'text-gray-600'
+                                ? 'text-orinoco-dark'
                                 : 'text-gray-200'
                         "
                     >
