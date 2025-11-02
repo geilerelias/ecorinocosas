@@ -1,0 +1,95 @@
+import '../css/app.css';
+
+import { createInertiaApp } from '@inertiajs/vue3';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { createPinia } from 'pinia';
+import type { DefineComponent } from 'vue';
+import { createApp, h } from 'vue';
+import { initializeTheme } from './composables/useAppearance';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+    faAngleRight,
+    faArrowRight,
+    faBars, // <- aquí está el problema
+    faBolt,
+    faEnvelope,
+    faMapMarkerAlt,
+    faNetworkWired,
+    faPhone,
+    faUser,
+    faUserShield,
+    faSolarPanel,
+    faGlobeAmericas,
+    faUsers,
+    faBullseye,
+    faEye,
+    faLeaf,
+    faLightbulb,
+    faHandshake,
+    faCheck,
+} from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faFacebookF,
+  faInstagram,
+  faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons'
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(
+    faUser,
+    faPhone,
+    faBars,
+    faBolt,
+    faUserShield,
+    faNetworkWired,
+    faAngleRight,
+    faMapMarkerAlt,
+    faEnvelope,
+    faFacebookF,
+    faLinkedinIn,
+    faInstagram,
+    faArrowRight,
+    faGithub,
+    faSolarPanel,
+    faGlobeAmericas,
+    faUsers,
+    faBullseye,
+    faEye,
+    faLeaf,
+    faLightbulb,
+    faHandshake,
+    faCheck,
+);
+
+import SirvjsVue from '@sirv/sirvjs-vue'
+
+
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+
+createInertiaApp({
+    title: (title) => (title ? `${title} - ${appName}` : appName),
+    resolve: (name) =>
+        resolvePageComponent(
+            `./pages/${name}.vue`,
+            import.meta.glob<DefineComponent>('./pages/**/*.vue'),
+        ),
+    setup({ el, App, props, plugin }) {
+        createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(SirvjsVue)
+            .use(createPinia())
+            .component('font-awesome-icon', FontAwesomeIcon)
+            .mount(el);
+    },
+    progress: {
+        color: '#8BC34A',
+        showSpinner: true,
+    },
+});
+
+// This will set light / dark mode on page load...
+initializeTheme();
