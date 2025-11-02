@@ -89,7 +89,7 @@ const buttonClass = (primary?: boolean) => [
 
 <template>
     <section
-        class="parallax-hero relative flex h-[70vh] items-center justify-center overflow-hidden"
+        class="mt-14 parallax-hero relative flex h-[70vh] items-center justify-center overflow-hidden"
         :style="sectionStyle"
     >
         <!-- Capa superpuesta -->

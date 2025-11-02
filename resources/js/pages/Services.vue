@@ -39,11 +39,11 @@ onMounted(() => {
             :backgroundImage="ServicesBanner"
             :buttons="[
                 {
-                    label: 'Nuestros Servicios',
+                    label: 'Servicios',
                     section: '#services',
                     primary: true,
                 },
-                { label: 'Solicitar Asesoría', href: '/contacto' },
+                { label: 'Asesoría', href: '/contact' },
             ]"
         />
 

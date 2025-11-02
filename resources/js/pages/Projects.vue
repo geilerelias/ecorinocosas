@@ -68,11 +68,11 @@ function filtrarProyectos() {
                 :backgroundImage="ProyectsBanner"
                 :buttons="[
                     {
-                        label: 'Ver Portafolio',
+                        label: 'Portafolio',
                         section: '#portfolio',
                         primary: true,
                     },
-                    { label: 'Casos de Éxito', href: '/blog' },
+                    { label: 'Blog', href: '/blog' },
                 ]"
             />
             <!-- Filtro tipo buscador -->
@@ -135,7 +135,7 @@ function filtrarProyectos() {
             </div>
 
             <!-- Sección de proyectos -->
-            <section class="py-20">
+            <section id="portfolio" class="py-20">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div
                         class="grid gap-10 md:grid-cols-2 lg:grid-cols-3"

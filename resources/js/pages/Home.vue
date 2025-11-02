@@ -126,10 +126,10 @@ onUnmounted(() => {
             </div>
         </section>
         <!-- Sections -->
-        <ServicesSection />
+        <ServicesSection  id="services"/>
         <VideoSection />
         <StatisticsSection />
-        <ProjectsSection />
+        <ProjectsSection id="projects" />
         <ArticlesSection />
         <FaqSection />
         <NewsletterSection />

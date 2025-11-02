@@ -46,7 +46,7 @@ const timeline = [
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestLayout >
         <Head title="Nosotros - E.C Orinoco S.A.S" />
 
         <!-- Hero -->
@@ -240,10 +240,10 @@ const timeline = [
             </div>
         </section>
 
-        <TeamSection class="bg-orinoco-light"></TeamSection>
+        <TeamSection id="team" class="bg-orinoco-light"></TeamSection>
 
         <!-- 🏗️ HISTORIA -->
-        <section
+        <section id="history"
             class="relative overflow-hidden bg-white py-24 text-orinoco-dark"
         >
             <div class="relative mx-auto max-w-6xl px-6" data-aos="fade-up">
@@ -478,70 +478,37 @@ const timeline = [
             </div>
         </section>
 
-        <!-- 🌍 CTA FINAL -->
-        <section
-            class="relative overflow-hidden bg-gradient-to-r from-lime-500 via-green-700 to-green-900 py-28 text-center text-white"
-        >
-            <div class="absolute inset-0">
-                <img
-                    src="https://picsum.photos/1600/800?random=50"
-                    alt="Futuro Verde"
-                    class="h-full w-full object-cover opacity-20"
-                />
-            </div>
-            <div
-                class="relative z-10 mx-auto max-w-3xl px-6"
-                data-aos="fade-up"
-            >
-                <h2
-                    class="mb-6 text-3xl leading-snug font-extrabold md:text-4xl"
-                >
-                    “Trabajamos cada día por un mundo más limpio, eficiente y
-                    sostenible.”
-                </h2>
-                <p class="mb-8 text-lg opacity-90">
-                    En E.C Orinoco S.A.S, la energía del cambio está en nuestras
-                    manos.
-                </p>
-                <a
-                    href="/contact"
-                    class="rounded-full bg-white px-6 py-3 font-semibold text-orinoco-dark shadow-md transition hover:bg-lime-200"
-                >
-                    Contáctanos
-                </a>
-            </div>
-        </section>
-
         <!-- 💬 CONTACT CTA -->
         <section
-            class="relative mx-6 my-12 mt-16 overflow-hidden rounded-3xl bg-gradient-to-r from-green-700 via-lime-600 to-green-500 py-24 text-white shadow-2xl md:mx-12"
+            class="relative mx-4 my-12 mt-16 overflow-hidden rounded-3xl bg-gradient-to-r from-green-700 via-lime-600 to-green-500 py-16 sm:py-20 lg:py-24 text-white shadow-2xl md:mx-8 lg:mx-12"
         >
-            <div
-                class="absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-lime-400/20 blur-3xl"
-            ></div>
-            <div
-                class="absolute top-0 right-0 h-64 w-64 rounded-full bg-white/10 blur-2xl"
-            ></div>
+            <!-- Fondos decorativos -->
+            <div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-lime-400/20 blur-3xl"></div>
+            <div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
 
             <div
-                class="relative mx-auto grid max-w-7xl items-center gap-10 px-8 md:grid-cols-2"
+                class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-8 md:grid-cols-2"
             >
-                <!-- Text content -->
-                <div>
-                    <h2 class="mb-4 text-4xl font-bold">
+                <!-- Texto principal -->
+                <div class="text-center md:text-left">
+                    <h2
+                        class="mb-4 text-[clamp(1.8rem,5vw,2.5rem)] font-bold leading-tight"
+                    >
                         ¿Tienes alguna pregunta?
                     </h2>
-                    <p class="mb-8 text-lg leading-relaxed text-white/90">
-                        Nuestro equipo está listo para ayudarte. Contáctanos
-                        para obtener asesoría profesional en soluciones
-                        energéticas sostenibles, proyectos industriales y
-                        servicios de ingeniería de alto nivel.
+
+                    <p
+                        class="mb-8 text-[clamp(1rem,2.5vw,1.125rem)] leading-relaxed text-white/90"
+                    >
+                        Nuestro equipo está listo para ayudarte. Contáctanos para obtener
+                        asesoría profesional en soluciones energéticas sostenibles, proyectos
+                        industriales y servicios de ingeniería de alto nivel.
                     </p>
 
                     <div
-                        class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8"
+                        class="flex flex-col items-center sm:flex-row sm:justify-start sm:space-x-8 gap-6"
                     >
-                        <div>
+                        <div class="text-center sm:text-left">
                             <p
                                 class="text-sm font-semibold tracking-wide text-white/70 uppercase"
                             >
@@ -549,13 +516,13 @@ const timeline = [
                             </p>
                             <a
                                 href="tel:+573125039694"
-                                class="text-2xl font-bold transition hover:text-lime-300"
+                                class="text-xl sm:text-2xl font-bold transition hover:text-lime-300 break-all"
                             >
                                 +57 312 5039694
                             </a>
                         </div>
 
-                        <div>
+                        <div class="text-center sm:text-left">
                             <p
                                 class="text-sm font-semibold tracking-wide text-white/70 uppercase"
                             >
@@ -563,7 +530,7 @@ const timeline = [
                             </p>
                             <a
                                 href="mailto:contacto@ecorinocosas.com"
-                                class="text-2xl font-bold transition hover:text-lime-300"
+                                class="text-xl sm:text-2xl font-bold transition hover:text-lime-300 break-all"
                             >
                                 contacto@ecorinocosas.com
                             </a>
@@ -571,38 +538,32 @@ const timeline = [
                     </div>
                 </div>
 
-                <!-- Office Cards -->
+                <!-- Tarjetas de oficinas -->
                 <div class="grid gap-6 sm:grid-cols-2">
                     <div
-                        class="transform overflow-hidden rounded-2xl bg-white text-orinoco-dark shadow-lg transition hover:-translate-y-2"
+                        class="overflow-hidden rounded-2xl bg-white text-orinoco-dark shadow-lg transition-transform hover:-translate-y-2"
                     >
                         <img
                             src="https://picsum.photos/400/300?random=51"
                             alt="Oficina principal"
-                            class="h-40 w-full object-cover"
+                            class="h-40 sm:h-44 w-full object-cover"
                         />
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold">
-                                Oficina Principal
-                            </h3>
-                            <p class="text-sm text-gray-600">
-                               Villavicencio Meta.
-                            </p>
+                        <div class="p-4 sm:p-5">
+                            <h3 class="text-lg font-semibold mb-1">Oficina Principal</h3>
+                            <p class="text-sm text-gray-600">Villavicencio, Meta</p>
                         </div>
                     </div>
 
                     <div
-                        class="transform overflow-hidden rounded-2xl bg-white text-orinoco-dark shadow-lg transition hover:-translate-y-2"
+                        class="overflow-hidden rounded-2xl bg-white text-orinoco-dark shadow-lg transition-transform hover:-translate-y-2"
                     >
                         <img
                             src="https://picsum.photos/400/300?random=52"
                             alt="Ubicación"
-                            class="h-40 w-full object-cover"
+                            class="h-40 sm:h-44 w-full object-cover"
                         />
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold">
-                                Ubicación Estratégica
-                            </h3>
+                        <div class="p-4 sm:p-5">
+                            <h3 class="text-lg font-semibold mb-1">Ubicación Estratégica</h3>
                             <p class="text-sm text-gray-600">
                                 Operaciones a nivel nacional e internacional.
                             </p>
@@ -611,6 +572,7 @@ const timeline = [
                 </div>
             </div>
         </section>
+
     </GuestLayout>
 </template>
 
