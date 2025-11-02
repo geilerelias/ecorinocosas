@@ -71,6 +71,7 @@ const scrollToForm = () => {
 >
 
 <template>
+
     <GuestLayout class="bg-white">
         <!-- Hero -->
         <Hero
