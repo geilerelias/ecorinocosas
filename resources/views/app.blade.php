@@ -35,7 +35,7 @@
     <meta property="og:title" content="E.C Orinoco S.A.S">
     <meta property="og:description" content="Ingeniería y sostenibilidad para un futuro mejor.">
     <meta property="og:image" content="/images/logo/android-chrome-512x512.png">
-    <meta property="og:url" content="{{ url('/">
+    <meta property="og:url" content="{{ url('/')}}">
     <meta property="og:site_name" content="E.C Orinoco S.A.S">
 
     <!-- ✅ Twitter Cards -->
