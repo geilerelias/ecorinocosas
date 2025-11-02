@@ -1,31 +1,48 @@
 <template>
-    <section id="servicios" class="py-20 bg-orinoco-light">
+    <section id="categorias-servicios" class="py-20 bg-orinoco-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-orinoco-darker mb-4">Nuestros Servicios</h2>
-                <p class="text-xl text-orinoco-gray max-w-3xl mx-auto">
-                    Ofrecemos soluciones integrales en energía eléctrica y telecomunicaciones con la más alta tecnología y estándares de calidad.
+                <h2 class="text-4xl font-bold text-orinoco-darker mb-4">Áreas de Servicio</h2>
+                <p class="text-lg text-orinoco-gray max-w-2xl mx-auto">
+                    Descubre nuestras principales líneas de trabajo y especialización.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div v-for="service in randomServices" :key="service.id" class="bg-white p-8 rounded-xl hover-lift shadow-lg">
-
-                    <div class="flex justify-left mb-3">
-                        <div class="relative h-18 w-18 rounded-full overflow-hidden border-2 border-orinoco-primary shadow-md group">
-                            <img
-                                :src="service.photos?.[0]?.source || '/images/placeholders/renewable.jpg'"
-                                :alt="service.title"
-                                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                        </div>
+            <!-- Categorías -->
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                <div
+                    v-for="(group, index) in store.services"
+                    :key="index"
+                    class="relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-500"
+                >
+                    <!-- Collage de imágenes -->
+                    <div class="grid grid-cols-3 grid-rows-2 gap-1 h-48 sm:h-56 md:h-64 overflow-hidden">
+                        <img
+                            v-for="(photo, pIndex) in collageImages(group)"
+                            :key="pIndex"
+                            :src="photo"
+                            class="object-cover w-full h-full"
+                            :class="{
+                'col-span-2 row-span-2': pIndex === 0, // imagen principal más grande
+              }"
+                            alt="imagen de servicio"
+                        />
                     </div>
 
+                    <!-- Capa oscura -->
+                    <div class="absolute inset-0 bg-orinoco-dark/60"></div>
 
-
-                    <h3 class="text-2xl font-semibold mb-4 text-orinoco-darker">{{ service.title }}</h3>
-                    <p class="text-gray-600 mb-4">{{ service.description }}</p>
-                    <Link href="/servicios" class="text-orinoco-primary font-semibold hover:text-orinoco-dark transition">Conocer Más →</Link>
+                    <!-- Texto -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+                        <i :class="['mdi', group.icono, 'text-4xl mb-3 text-lime-300']"></i>
+                        <h3 class="text-2xl font-semibold mb-2">{{ group.clasificacion }}</h3>
+                        <Link
+                            href="/services"
+                            class="mt-2 inline-block bg-lime-500 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-lime-600 transition"
+                        >
+                            Ver servicios →
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,37 +54,22 @@ import { computed } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import { useServicesStore } from '@/Stores/useServicesStore'
 
-// Tipos de datos
-interface ServiceItem {
-    title: string
-    description: string
-    photos: { source: string }[]
-    layout: number[]
-    height: string[]
-}
-
-interface ServiceGroup {
-    clasificacion: string
-    icono: string
-    servicios: ServiceItem[]
-}
-
 const store = useServicesStore()
 
-// 🔹 Combinar todos los servicios en una sola lista con su ícono y categoría
-const allServices = computed(() =>
-    store.services.flatMap((group: ServiceGroup) =>
-        group.servicios.map(service => ({
-            ...service,
-            icono: group.icono,
-            clasificacion: group.clasificacion,
-        }))
+// Selecciona hasta 5 imágenes por categoría para el collage
+const collageImages = (group: any) => {
+    const allPhotos = group.servicios.flatMap((s: any) =>
+        s.photos?.map((p: any) => p.source)
     )
-)
-
-// 🔹 Seleccionar 3 servicios aleatorios
-const randomServices = computed(() =>
-    [...allServices.value].sort(() => 0.5 - Math.random()).slice(0, 3)
-)
-
+    // Mezclar y tomar máximo 5
+    return [...new Set(allPhotos)].sort(() => 0.5 - Math.random()).slice(0, 5)
+}
 </script>
+
+<style scoped>
+/* Animación sutil al pasar el cursor */
+div:hover img {
+    transform: scale(1.05);
+    transition: transform 0.6s ease;
+}
+</style>
