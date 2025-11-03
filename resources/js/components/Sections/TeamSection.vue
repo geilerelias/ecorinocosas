@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Users } from 'lucide-vue-next'
+
 import henry from '@/../images/team/henry.png';
 import diego from '@/../images/team/diego.png';
 import geiler from '@/../images/team/geiler.png';
@@ -46,7 +48,7 @@ const team = ref([
             <div
                 class="mb-4 inline-flex items-center justify-center rounded-full bg-lime-500/10 p-3"
             >
-                <i class="fa-solid fa-people-group text-2xl text-lime-600"></i>
+                <Users class="w-6 h-6 text-orinoco-accent" />
             </div>
             <h2 class="mb-3 text-4xl font-extrabold text-orinoco-dark">
                 Nuestro Equipo
