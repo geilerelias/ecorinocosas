@@ -3,15 +3,9 @@ import { ref } from 'vue';
 import henry from '@/../images/team/henry.png';
 import diego from '@/../images/team/diego.png';
 import geiler from '@/../images/team/geiler.png';
+import arpidio from '@/../images/team/arpidio.png';
 
 const team = ref([
-    {
-        img: henry,
-        name: 'JHON VÉLEZ',
-        role: 'CEO & FUNDADOR',
-        occupation: 'Ingeniero civil',
-        perfil: 'Ingeniero civil con más de 10 años de experiencia en diseño, planeación y mantenimiento de proyectos de infraestructura. Apasionado por la innovación tecnológica aplicada al desarrollo urbano y rural sostenible.',
-    },
     {
         img: diego,
         name: 'DIEGO DÁVILA',
@@ -19,6 +13,21 @@ const team = ref([
         occupation: 'Ingeniero electrónico',
         perfil: 'Ingeniero electrónico con especialización en alta gerencia y formación en transformación digital y energías renovables. Con más de 12 años de experiencia, combina liderazgo técnico y gestión estratégica para el desarrollo de proyectos de alta calidad.',
     },
+    {
+        img: henry,
+        name: 'JHON VÉLEZ',
+        role: 'Obras Civiles',
+        occupation: 'Ingeniero Civil',
+        perfil: 'Ingeniero civil con más de 10 años de experiencia en diseño, planeación y mantenimiento de proyectos de infraestructura. Especialista en la gestión de obras civiles sostenibles y en la integración de soluciones tecnológicas para el desarrollo urbano y rural.',
+    },
+    {
+        img: arpidio,
+        name: 'ARPIDIO GOYENECHE',
+        role: 'Técnico Fotovoltaico',
+        occupation: 'Técnico en Energías Renovables',
+        perfil: 'Llanero residenciado en Villavicencio (Meta), técnico certificado en energías renovables con formación en manejo, diseño y operación de sistemas fotovoltaicos. Acreditado por la Superintendencia de Industria y Comercio para la conversión de automotores a 100 % eléctricos. Con amplia experiencia en maquinaria amarilla para obras civiles y en la elaboración de pozos para piscicultura.',
+    },
+
     {
         img: geiler,
         name: 'Geiler Radillo',
