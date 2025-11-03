@@ -8,6 +8,8 @@ import ServicesSection from '@/components/Sections/ServicesSection.vue';
 import StatisticsSection from '@/components/Sections/StatisticsSection.vue';
 import VideoSection from '@/components/Sections/VideoSection.vue';
 import GuestLayout from '@/layouts/GuestLayout.vue';
+import { Network } from "lucide-vue-next";
+
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const scrolled = ref<boolean>(false);
@@ -104,10 +106,7 @@ onUnmounted(() => {
                                 <div
                                     class="mr-3 flex h-12 w-12 items-center justify-center rounded-full bg-orinoco-primary"
                                 >
-                                    <font-awesome-icon
-                                        icon="fa-network-wired"
-                                        class="text-xl text-white"
-                                    />
+                                    <Network class="w-5 h-5 text-white" />
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-600">

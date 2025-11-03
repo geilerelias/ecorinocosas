@@ -2,13 +2,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-/* 2️⃣ Importar FontAwesome y fuentes */
-@import '@fortawesome/fontawesome-free/css/all.min.css';
-
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/inter/700.css";
-
 
 /* 3️⃣ Configuración del tema */
 
@@ -69,16 +62,49 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 
-    /* Colores personalizados de E.C Orinoco */
-    --orinoco-primary: #169273;
+    /* Colores principales */
+    --orinoco-primary: #1b5e20;
+    --orinoco-primary-light: #4caf50;   /* hover, resaltado */
+    --orinoco-primary-dark: #154616;    /* sombras, bordes */
+
+    /* Secundarios */
     --orinoco-secondary: #1e6b52;
+    --orinoco-secondary-light: #3c977b;
+    --orinoco-secondary-dark: #14523b;
+
+    /* Colores oscuros */
     --orinoco-dark: #203432;
     --orinoco-darker: #0e241d;
-    --orinoco-light: #f5f8f7;
     --orinoco-gray: #4a5855;
-    --orinoco-accent: #ffc107;
+
+    /* Colores claros / fondo */
+    --orinoco-light: #f5f8f7;
     --orinoco-white: #ffffff;
+
+    /* Colores de acento y soporte */
+    --orinoco-accent: #ffc107;
+    --orinoco-accent-light: #ffca28;
+    --orinoco-accent-dark: #ffb300;
     --orinoco-blue: #0288d1;
+    --orinoco-blue-light: #03a9f4;
+    --orinoco-blue-dark: #01579b;
+
+    /* Texto */
+    --orinoco-text: #203432;
+    --orinoco-text-light: #ffffff;
+    --orinoco-text-muted: #607d72;
+
+    /* Estados */
+    --orinoco-success: #4caf50;
+    --orinoco-warning: #ffc107;
+    --orinoco-error: #d32f2f;
+    --orinoco-info: #0288d1;
+
+    /* Bordes y sombras */
+    --orinoco-border: #203432;
+    --orinoco-border-light: #cfd8dc;
+    --orinoco-shadow: rgba(0, 0, 0, 0.2);
+
 
     --color-orinoco-primary: #169273;
     --color-orinoco-secondary: #203432;
@@ -100,7 +126,7 @@
 }
 
 .bg-orinoco-primary {
-    background-color: #1b5e20;
+    background-color: var(--orinoco-primary);
 }
 
 .gradient-orinoco {

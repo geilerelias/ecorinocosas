@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen overflow-x-hidden bg-gray-50">
         <!-- Navigation reutilizable -->
         <PublicNav :scrolled="scrolled" @toggle-mobile-menu="toggleMobileMenu" :mobile-menu-open="mobileMenuOpen" />
         <PublicDrawer :scrolled="scrolled" :mobile-menu-open="mobileMenuOpen" @close-drawer="toggleMobileMenu" />
@@ -7,7 +7,7 @@
         <main>
             <slot />
         </main>
-        
+
         <!-- Footer -->
         <PublicFooter />
     </div>

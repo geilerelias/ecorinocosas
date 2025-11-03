@@ -8,34 +8,33 @@ import { createApp, h } from 'vue';
 import { initializeTheme } from './composables/useAppearance';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+    faFacebookF,
+    faGithub,
+    faInstagram,
+    faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons';
 import {
     faAngleRight,
     faArrowRight,
-    faBars, // <- aquí está el problema
+    faBars,
     faBolt,
+    faBullseye,
+    faCheck,
     faEnvelope,
+    faEye,
+    faGlobeAmericas,
+    faHandshake,
+    faLeaf,
+    faLightbulb,
     faMapMarkerAlt,
     faNetworkWired,
     faPhone,
-    faUser,
-    faUserShield,
     faSolarPanel,
-    faGlobeAmericas,
+    faUser,
     faUsers,
-    faBullseye,
-    faEye,
-    faLeaf,
-    faLightbulb,
-    faHandshake,
-    faCheck,
+    faUserShield,
 } from '@fortawesome/free-solid-svg-icons';
-
-import {
-  faFacebookF,
-  faInstagram,
-  faLinkedinIn,
-} from '@fortawesome/free-brands-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -65,9 +64,6 @@ library.add(
     faCheck,
 );
 
-import SirvjsVue from '@sirv/sirvjs-vue'
-
-
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -80,7 +76,6 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(SirvjsVue)
             .use(createPinia())
             .component('font-awesome-icon', FontAwesomeIcon)
             .mount(el);

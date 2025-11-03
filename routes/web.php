@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
+
 Route::get('/example', function () {
     return Inertia::render('Example');
 })->name('example');
@@ -31,7 +34,7 @@ Route::get('/projects', function () {
 
 Route::get('/projects/{id}', function ($id) {
     return Inertia::render('ProjectDetail', [
-        'id' => (int) $id,
+        'id' => (int)$id,
     ]);
 })->name('projects.show');
 
@@ -49,8 +52,14 @@ Route::get('/contact', function () {
     return Inertia::render('Contact');
 })->name('contact');
 
+Route::post('/contact', [ContactController::class, 'store'])->name('contacto.store');
+
+
+Route::post('/newsletter', [NewsletterController::class, 'store']);
+
+
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';

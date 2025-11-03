@@ -154,7 +154,5 @@ const navLinkClass = computed(() => {
 </template>
 
 <style scoped>
-.text-orinoco-dark {
-    color: #0d3b1d;
-}
+
 </style>

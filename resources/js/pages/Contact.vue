@@ -1,29 +1,9 @@
 <script setup lang="ts">
 import ContactBanner from '@/../images/hero/contact-banner.jpg';
 import Hero from '@/components/Hero.vue';
-import Button from '@/Components/UI/Button.vue';
-import { useGlobalMessage } from '@/composables/useGlobalMessage';
+import FormContactSection from '@/components/Sections/FormContactSection.vue';
 import GuestLayout from '@/layouts/GuestLayout.vue';
-import { useAppStore } from '@/stores/useAppStore';
-import { useForm } from '@inertiajs/vue3';
-import { storeToRefs } from 'pinia';
-
-interface ContactForm {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-}
-
-const form = useForm<ContactForm>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-});
-
-const { showGlobalMessage } = useGlobalMessage(); // ✅ agregado
-const appStore = storeToRefs(useAppStore(), { scroll: true });
+import Button from '@/components/ui/Button.vue';
 
 const socials = [
     {
@@ -43,24 +23,6 @@ const socials = [
     },
 ];
 
-const submit = (): void => {
-    form.post('/contacto', {
-        onSuccess: (): void => {
-            showGlobalMessage(
-                '¡Mensaje enviado correctamente! Te contactaremos pronto.',
-                'success',
-            );
-            form.reset();
-        },
-        onError: (): void => {
-            showGlobalMessage(
-                'Error al enviar el mensaje. Inténtalo de nuevo.',
-                'error',
-            );
-        },
-    });
-};
-
 const scrollToForm = () => {
     const formElement = document.querySelector('form');
     if (formElement) {
@@ -71,7 +33,6 @@ const scrollToForm = () => {
 >
 
 <template>
-
     <GuestLayout class="bg-white">
         <!-- Hero -->
         <Hero
@@ -85,91 +46,13 @@ const scrollToForm = () => {
             ]"
         />
 
+
+
         <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-2">
                 <!-- FORMULARIO DE CONTACTO -->
                 <div data-aos="fade-right">
-                    <h3 class="mb-6 text-2xl font-semibold">
-                        Envíanos un Mensaje
-                    </h3>
-
-                    <form id="form" @submit.prevent="submit" class="space-y-5">
-                        <!-- Nombre y Apellido -->
-                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            <input
-                                type="text"
-                                placeholder="Nombre"
-                                v-model="form.name"
-                                class="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 transition-all focus:border-[#024031] focus:ring-2 focus:ring-[#024031] focus:outline-none"
-                                required
-                            />
-                            <input
-                                type="text"
-                                placeholder="Apellido"
-                                v-model="form.lastname"
-                                class="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 transition-all focus:border-[#024031] focus:ring-2 focus:ring-[#024031] focus:outline-none"
-                            />
-                        </div>
-
-                        <!-- Email y Teléfono -->
-                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            <input
-                                type="email"
-                                placeholder="Correo electrónico"
-                                v-model="form.email"
-                                class="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 transition-all focus:border-[#024031] focus:ring-2 focus:ring-[#024031] focus:outline-none"
-                                required
-                            />
-                            <input
-                                type="tel"
-                                placeholder="Teléfono o WhatsApp"
-                                v-model="form.phone"
-                                class="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 transition-all focus:border-[#024031] focus:ring-2 focus:ring-[#024031] focus:outline-none"
-                            />
-                        </div>
-
-                        <!-- Asunto -->
-                        <input
-                            type="text"
-                            placeholder="Asunto o motivo del contacto"
-                            v-model="form.subject"
-                            class="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 transition-all focus:border-[#024031] focus:ring-2 focus:ring-[#024031] focus:outline-none"
-                        />
-
-                        <!-- Mensaje -->
-                        <textarea
-                            placeholder="Escribe tu mensaje aquí..."
-                            v-model="form.message"
-                            rows="5"
-                            class="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 transition-all focus:border-[#024031] focus:ring-2 focus:ring-[#024031] focus:outline-none"
-                            required
-                        ></textarea>
-
-                        <!-- Términos -->
-                        <label class="flex items-center text-sm text-gray-600">
-                            <input
-                                type="checkbox"
-                                v-model="form.terms"
-                                class="mr-2"
-                                required
-                            />
-                            Acepto los
-                            <a
-                                href="#"
-                                class="ml-1 font-semibold text-[#024031] hover:underline"
-                            >
-                                Términos y Condiciones </a
-                            >.
-                        </label>
-
-                        <!-- Botón -->
-                        <button
-                            type="submit"
-                            class="w-full transform rounded-xl bg-[#7bc043] py-3 font-semibold text-white shadow-md transition-transform hover:scale-[1.02] hover:bg-[#69a936]"
-                        >
-                            Enviar Mensaje
-                        </button>
-                    </form>
+                    <FormContactSection />
                 </div>
 
                 <!-- INFORMACIÓN DE CONTACTO -->
@@ -232,9 +115,7 @@ const scrollToForm = () => {
 
                     <!-- HORARIOS -->
                     <div class="border-t border-gray-200 pt-6">
-                        <h4
-                            class="mb-3 text-lg font-semibold text-orinoco-dark"
-                        >
+                        <h4 class="mb-3 text-lg font-semibold text-orinoco-dark">
                             Horario de Atención
                         </h4>
                         <p class="text-gray-700">
@@ -248,9 +129,7 @@ const scrollToForm = () => {
 
                     <!-- REDES SOCIALES -->
                     <div class="border-t border-gray-200 pt-6">
-                        <h4
-                            class="mb-4 text-lg font-semibold text-orinoco-dark"
-                        >
+                        <h4 class="mb-4 text-lg font-semibold text-orinoco-dark">
                             Síguenos
                         </h4>
 
@@ -258,12 +137,15 @@ const scrollToForm = () => {
                             <a
                                 v-for="s in socials"
                                 :key="s.name"
-                                href="#"
-                                class="text-orinoco-primary transition hover:text-orinoco-dark"
+                                :href="s.href"
+                                target="_blank"
+                                rel="noopener"
+                                class="flex h-10 w-10 transform items-center justify-center rounded-full bg-primary/10 transition-transform hover:-translate-y-1 hover:scale-110 hover:bg-orinoco-dark/20"
+                                :aria-label="s.name"
                             >
                                 <font-awesome-icon
                                     :icon="s.icon"
-                                    class="text-2xl"
+                                    class="text-2xl text-orinoco-primary transition-transform duration-300 group-hover:scale-110"
                                 />
                             </a>
                         </div>
@@ -287,80 +169,143 @@ const scrollToForm = () => {
                     ¿Tienes un proyecto en mente?
                 </h4>
                 <p class="mb-6 text-gray-700">
-                    Nuestro equipo de expertos en energía y telecomunicaciones
-                    está listo para ayudarte a hacerlo realidad.
+                    Nuestro equipo de expertos en energía y telecomunicaciones está
+                    listo para ayudarte a hacerlo realidad.
                 </p>
                 <Button @click="scrollToForm" class="px-8 py-3"
-                    >Contáctanos Ahora</Button
+                >Contáctanos Ahora</Button
                 >
             </div>
         </div>
 
-        <!-- SECCIÓN DE OFICINAS -->
-        <section class="mt-20 bg-orinoco-primary py-16 text-white">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="grid gap-16 md:grid-cols-2">
-                    <!-- Oficina Principal -->
-                    <div
-                        class="flex flex-col items-start md:flex-row md:justify-between"
-                    >
-                        <div>
-                            <h3 class="mb-2 text-2xl font-bold">
-                                Oficina Principal Bogotá
-                            </h3>
-                            <p class="text-gray-100">
-                                Calle 123 #45-67<br />
-                                Bogotá, Colombia<br />
-                                Código Postal 110231
-                            </p>
-                        </div>
-                        <div class="mt-4 text-gray-100 md:mt-0">
-                            <p>
-                                <span class="font-semibold text-white"
-                                    >Email:</span
-                                >
-                                contacto@ecorinoco.com
-                            </p>
-                            <p>
-                                <span class="font-semibold text-white"
-                                    >Teléfono:</span
-                                >
-                                +57 (1) 456 7890
-                            </p>
-                        </div>
+        <!-- SECCIÓN OFICINA REGIONAL META -->
+        <section class="mt-20 bg-orinoco-primary py-20 text-white">
+            <div class="mx-auto max-w-4xl px-6 text-center">
+                <!-- Título -->
+                <h2 class="text-3xl font-bold tracking-tight">Oficina Regional Meta</h2>
+                <p class="mt-3 text-gray-100">
+                    Comunícate con nosotros o visítanos en nuestra sede principal del Meta.
+                </p>
+
+                <!-- Tarjeta de contacto -->
+                <div
+                    class="mt-10 rounded-2xl bg-white/10 p-8 text-left backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:bg-white/15"
+                >
+                    <!-- Dirección -->
+                    <div class="flex items-start gap-3">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-orinoco-accent"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z"
+                            />
+                        </svg>
+                        <p class="text-gray-100 leading-relaxed">
+                            Villavicencio, Meta, Colombia<br />
+                            Código Postal 500001
+                        </p>
                     </div>
 
-                    <!-- Oficina Regional -->
-                    <div
-                        class="flex flex-col items-start md:flex-row md:justify-between"
-                    >
-                        <div>
-                            <h3 class="mb-2 text-2xl font-bold">
-                                Oficina Regional Meta
-                            </h3>
-                            <p class="text-gray-100">
-                                Carrera 18 #10-25<br />
-                                Villavicencio, Meta<br />
-                                Código Postal 500001
-                            </p>
-                        </div>
-                        <div class="mt-4 text-gray-100 md:mt-0">
-                            <p>
-                                <span class="font-semibold text-white"
-                                    >Email:</span
-                                >
-                                regional@ecorinoco.com
-                            </p>
-                            <p>
-                                <span class="font-semibold text-white"
-                                    >Teléfono:</span
-                                >
-                                +57 320 456 7890
-                            </p>
-                        </div>
+                    <!-- Correo -->
+                    <div class="mt-5 flex items-center gap-3">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-orinoco-accent"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M21.75 5.75l-9.75 6.5-9.75-6.5M2.25 5.75h19.5v12.5a1.25 1.25 0 01-1.25 1.25H3.5a1.25 1.25 0 01-1.25-1.25V5.75z"
+                            />
+                        </svg>
+                        <a
+                            href="mailto:contacto@ecorinocosas.com"
+                            class="text-gray-100 hover:text-white transition-colors"
+                        >
+                            contacto@ecorinocosas.com
+                        </a>
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="mt-5 flex items-center gap-3">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-orinoco-accent"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M2.25 6.75A3 3 0 015.25 3.75h2.25a.75.75 0 01.75.75v3.25a.75.75 0 01-.75.75H6a.75.75 0 00-.75.75v2a11.25 11.25 0 0011.25 11.25h2a.75.75 0 00.75-.75v-1.5a.75.75 0 01.75-.75h3.25a.75.75 0 01.75.75v2.25a3 3 0 01-3 3H18A15.75 15.75 0 012.25 6.75z"
+                            />
+                        </svg>
+                        <a
+                            href="tel:+573125039694"
+                            class="text-gray-100 hover:text-white transition-colors"
+                        >
+                            +57 312 5039694
+                        </a>
+                    </div>
+
+                    <!-- Horario -->
+                    <div class="mt-5 flex items-center gap-3">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-orinoco-accent"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M12 6v6l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        <p class="text-gray-100">
+                            Lunes a Viernes: 8:00 a.m. - 5:00 p.m.<br />
+                            Sábados: 8:00 a.m. - 12:00 p.m.
+                        </p>
+                    </div>
+
+                    <!-- Botón WhatsApp -->
+                    <div class="mt-8 text-center">
+                        <a
+                            href="https://wa.me/573125039694?text=Hola%20Eco%20Orinoco%2C%20quisiera%20más%20información%20por%20favor."
+                            target="_blank"
+                            class="inline-flex items-center gap-2 rounded-full bg-[#00db40] px-6 py-3 font-semibold text-black shadow-md transition-all duration-300 hover:bg-green-600 hover:scale-[1.03]"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.173.198-.297.297-.496.099-.198.05-.372-.025-.52-.075-.149-.67-1.611-.917-2.206-.242-.579-.487-.5-.67-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.793.372-.273.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.1 3.2 5.084 4.487.711.306 1.265.489 1.697.626.713.227 1.36.195 1.872.118.571-.085 1.758-.718 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+                                />
+                            </svg>
+                            Enviar mensaje por WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
+
     </GuestLayout>
 </template>
