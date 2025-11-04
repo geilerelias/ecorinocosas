@@ -31,10 +31,10 @@ const showTerms = ref(false);
 
 const submit = async () => {
     if (!form.value.terms) {
-        showGlobalMessage(
-            'Debes aceptar los términos y condiciones.',
-            'warning',
-        );
+        showGlobalMessage({
+            message: 'Debes aceptar los términos y condiciones.',
+            type: 'warning',
+        });
         return;
     }
 
@@ -43,10 +43,11 @@ const submit = async () => {
     try {
         await axios.post('/contact', form.value);
 
-        showGlobalMessage(
-            '¡Mensaje enviado correctamente! Te contactaremos pronto.',
-            'success',
-        );
+        showGlobalMessage({
+            message: '¡Mensaje enviado correctamente! Te contactaremos pronto.',
+            type: 'success',
+        });
+
         form.value = {
             name: '',
             lastname: '',
@@ -58,15 +59,15 @@ const submit = async () => {
         };
     } catch (error: any) {
         if (error.response?.status === 422) {
-            showGlobalMessage(
-                'Por favor completa los campos correctamente.',
-                'error',
-            );
+            showGlobalMessage({
+                message: 'Por favor completa los campos correctamente.',
+                type: 'error',
+            });
         } else {
-            showGlobalMessage(
-                'Error al enviar el mensaje. Intenta nuevamente.',
-                'error',
-            );
+            showGlobalMessage({
+                message: 'Error al enviar el mensaje. Intenta nuevamente.',
+                type: 'error',
+            });
         }
     } finally {
         loading.value = false;
@@ -86,14 +87,17 @@ const testFormData = {
 const sendTestData = async () => {
     try {
         const response = await axios.post('/contact', testFormData);
-        showGlobalMessage(
-            '✅ Envío de prueba exitoso. Revisa tu correo.',
-            'success',
-        );
+        showGlobalMessage({
+            message: '✅ Envío de prueba exitoso. Revisa tu correo.',
+            type: 'success',
+        });
         console.log('Respuesta del servidor:', response);
     } catch (error) {
         console.error('Error en el envío:', error);
-        showGlobalMessage('❌ Error al enviar el mensaje de prueba.', 'error');
+        showGlobalMessage({
+            message: '❌ Error al enviar el mensaje de prueba.',
+            type: 'error',
+        });
     }
 };
 </script>

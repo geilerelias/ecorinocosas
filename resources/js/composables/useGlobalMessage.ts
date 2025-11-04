@@ -1,31 +1,49 @@
-import { ref } from 'vue';
 import Swal from 'sweetalert2';
+import { ref } from 'vue';
 
-type MessageType = 'success' | 'error' | 'info' | 'warning';
+/**
+ * Tipos de mensaje admitidos
+ */
+export type MessageType = 'success' | 'error' | 'info' | 'warning';
+
+/**
+ * Interfaz para los mensajes de tipo Toast o Global Message
+ */
+export interface GlobalMessageOptions {
+    message: string;
+    type?: MessageType;
+    duration?: number;
+}
+
+/**
+ * Interfaz para los cuadros de confirmación
+ */
+export interface ConfirmActionOptions {
+    title: string;
+    text?: string;
+    confirmButtonText?: string;
+    cancelButtonText?: string;
+    icon?: MessageType;
+}
 
 const globalMessage = ref<string | null>(null);
 const messageType = ref<MessageType>('info');
 const isVisible = ref(false);
 
 export function useGlobalMessage() {
-    const showGlobalMessage = (
-        message: string,
-        type: MessageType = 'info',
-        duration = 4000
-    ) => {
+    /**
+     * Muestra un mensaje global (toast)
+     */
+    const showGlobalMessage = ({
+        message,
+        type = 'info',
+        duration = 4000,
+    }: GlobalMessageOptions) => {
         globalMessage.value = message;
         messageType.value = type;
         isVisible.value = true;
 
-        // ✅ Si SweetAlert2 está disponible, usa toast moderno
         if (Swal) {
-            const colors: Record<string, string> = {
-                success: '#69a936', // Verde del tema
-                error: '#d9534f',
-                info: '#3b82f6',
-                warning: '#f59e0b',
-            };
-
             Swal.fire({
                 toast: true,
                 position: 'top-end',
@@ -45,9 +63,7 @@ export function useGlobalMessage() {
                 },
             });
         } else {
-            // 🧩 Fallback si SweetAlert no está cargado
             console.warn('SweetAlert2 no detectado, usando fallback visual.');
-
             setTimeout(() => {
                 isVisible.value = false;
                 globalMessage.value = null;
@@ -55,10 +71,46 @@ export function useGlobalMessage() {
         }
     };
 
+    /**
+     * Cuadro de confirmación con botones
+     * Devuelve true si el usuario confirma la acción
+     */
+    const showConfirmMessage = async ({
+        title,
+        text = '',
+        confirmButtonText = 'Confirmar',
+        cancelButtonText = 'Cancelar',
+        icon = 'warning',
+    }: ConfirmActionOptions): Promise<boolean> => {
+        if (!Swal) {
+            console.warn(
+                'SweetAlert2 no detectado. confirmAction devolverá false.',
+            );
+            return false;
+        }
+
+        const result = await Swal.fire({
+            title,
+            text,
+            icon,
+            showCancelButton: true,
+            confirmButtonText,
+            cancelButtonText,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            reverseButtons: true,
+            focusCancel: true,
+        });
+
+        return result.isConfirmed;
+    };
+
+
     return {
         globalMessage,
         messageType,
         isVisible,
         showGlobalMessage,
+        showConfirmMessage,
     };
 }

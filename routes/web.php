@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,9 @@ Route::get('/contact', function () {
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contacto.store');
 
+Route::get('/newsletter', [NewsletterController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('newsletter.index');
 
 Route::post('/newsletter', [NewsletterController::class, 'store']);
 
@@ -61,5 +65,10 @@ Route::post('/newsletter', [NewsletterController::class, 'store']);
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', UserController::class)->except(['show']);
+});
 
 require __DIR__ . '/settings.php';

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import AppContent from '@/components/AppContent.vue';
+import AppFooter from '@/components/AppFooter.vue';
 import AppShell from '@/components/AppShell.vue';
 import AppSidebar from '@/components/AppSidebar.vue';
 import AppSidebarHeader from '@/components/AppSidebarHeader.vue';
 import type { BreadcrumbItemType } from '@/types';
-import AppFooter from '@/components/AppFooter.vue';
 
 interface Props {
     breadcrumbs?: BreadcrumbItemType[];
@@ -20,8 +20,10 @@ withDefaults(defineProps<Props>(), {
         <AppSidebar />
         <AppContent variant="sidebar" class="overflow-x-hidden">
             <AppSidebarHeader :breadcrumbs="breadcrumbs" />
-            <slot />
-            <AppFooter/>
+            <main class="min-h-full">
+                <slot />
+            </main>
+            <AppFooter />
         </AppContent>
     </AppShell>
 </template>

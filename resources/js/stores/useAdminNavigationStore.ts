@@ -1,18 +1,19 @@
-import { defineStore } from 'pinia';
-import {
-    LayoutGrid,
-    Building2,
-    FolderKanban,
-    Users,
-    Briefcase,
-    Package,
-    FileText,
-    BarChart3,
-    Bell,
-    LifeBuoy,
-} from 'lucide-vue-next';
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
+import {
+    BarChart3,
+    Bell,
+    Briefcase,
+    Building2,
+    FileText,
+    FolderKanban,
+    LayoutGrid,
+    LifeBuoy,
+    Package,
+    Users,
+    Users2,
+} from 'lucide-vue-next';
+import { defineStore } from 'pinia';
 
 export const useAdminNavigationStore = defineStore('adminNavigation', {
     state: () => ({
@@ -89,6 +90,17 @@ export const useAdminNavigationStore = defineStore('adminNavigation', {
                 title: 'Centro de ayuda',
                 href: '/ayuda',
                 icon: LifeBuoy,
+            },
+
+            {
+                title: 'Usuarios',
+                href: '/admin/users',
+                icon: Users,
+            },
+            {
+                title: 'Suscriptores',
+                href: '/newsletter',
+                icon: Users2,
             },
         ] as NavItem[],
     }),
