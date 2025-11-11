@@ -13,12 +13,7 @@ import { Network } from 'lucide-vue-next';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const scrolled = ref<boolean>(false);
-const mobileMenuOpen = ref<boolean>(false);
-
-const toggleMobileMenu = (): void => {
-    mobileMenuOpen.value = !mobileMenuOpen.value;
-};
-
+ref<boolean>(false);
 const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -42,12 +37,11 @@ onUnmounted(() => {
 <template>
     <GuestLayout>
         <!-- Hero Section con navegación integrada -->
-        <!-- Hero Section con navegación integrada -->
         <section
-            class="gradient-orinoco relative h-screen overflow-hidden text-white"
+            class="gradient-orinoco relative h-screen overflow-hidden text-white mt-0"
         >
             <!-- Background -->
-            <div class="absolute inset-0">
+            <div class="absolute inset-0 mt-0">
                 <img
                     :src="HomeBanner"
                     alt="Background"

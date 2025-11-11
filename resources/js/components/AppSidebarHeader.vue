@@ -137,17 +137,17 @@ onBeforeUnmount(() =>
                             <li
                                 class="cursor-pointer rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
                             >
-                                🔋 Sistema solar generó 120kWh hoy.
+                                Sistema solar generó 120kWh hoy.
                             </li>
                             <li
                                 class="cursor-pointer rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
                             >
-                                🌤 Nuevo reporte de consumo disponible.
+                                Nuevo reporte de consumo disponible.
                             </li>
                             <li
                                 class="cursor-pointer rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
                             >
-                                ⚙️ Actualización programada para esta noche.
+                                Actualización programada para esta noche.
                             </li>
                         </ul>
                         <div
@@ -170,7 +170,6 @@ onBeforeUnmount(() =>
                     class="h-5 w-5 text-gray-600 transition-transform dark:text-gray-300"
                 />
             </button>
-
 
             <DropdownMenu>
                 <DropdownMenuTrigger :as-child="true">
