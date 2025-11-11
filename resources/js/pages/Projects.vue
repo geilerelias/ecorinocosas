@@ -340,25 +340,7 @@ function filtrarProyectos() {
             </section>
 
 
-            <!-- Llamado a la acción -->
-            <section
-                class="bg-gradient-to-r from-orinoco-dark to-orinoco-primary py-16 text-center text-white"
-                data-aos="fade-up"
-            >
-                <h2 class="mb-4 text-3xl font-bold">
-                    ¿Listo para impulsar tu proyecto con energía limpia?
-                </h2>
-                <p class="mb-6 text-gray-200">
-                    Nuestro equipo está listo para desarrollar soluciones a tu
-                    medida.
-                </p>
-                <Link
-                    href="/contacto"
-                    class="rounded-full bg-white px-6 py-3 font-semibold text-orinoco-primary shadow-lg transition-transform hover:scale-105"
-                >
-                    Contáctanos
-                </Link>
-            </section>
+
         </div>
     </GuestLayout>
 </template>

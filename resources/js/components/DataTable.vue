@@ -134,7 +134,8 @@
         >
             <!-- Selector cantidad por página -->
             <div class="flex items-center gap-2 text-sm text-gray-600">
-                <span>Mostrar</span>
+                <span>Mostrar</span>serrun dev
+
                 <select
                     v-model.number="itemsPerPage"
                     class="rounded-lg border px-2 py-1 focus:ring-2 focus:ring-green-500"

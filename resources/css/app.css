@@ -62,6 +62,14 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 
+
+    --color-orinoco-primary: #1b5e20;
+    --color-orinoco-secondary: #203432;
+    --color-orinoco-dark: #1d4034;
+    --color-orinoco-accent: #ffc107;
+    --color-orinoco-blue: #0288d1;
+    --color-orinoco-light: #f1f8e9;
+
     /* Colores principales */
     --orinoco-primary: #1b5e20;
     --orinoco-primary-light: #4caf50;   /* hover, resaltado */
@@ -106,12 +114,7 @@
     --orinoco-shadow: rgba(0, 0, 0, 0.2);
 
 
-    --color-orinoco-primary: #169273;
-    --color-orinoco-secondary: #203432;
-    --color-orinoco-dark: #1d4034;
-    --color-orinoco-accent: #ffc107;
-    --color-orinoco-blue: #0288d1;
-    --color-orinoco-light: #f1f8e9;
+
 }
 .bg-orinoco-light {
     background-color: #f8faf8;

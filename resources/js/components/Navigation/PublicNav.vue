@@ -39,14 +39,15 @@ const breadcrumb = computed(() => {
 const navLinkClass = computed(() => {
     const isScrolledOrNotHome = props.scrolled || !isHome.value;
     return isScrolledOrNotHome
-        ? 'relative text-gray-700 hover:text-orinoco-primary px-3 py-2 text-sm font-medium transition'
-        : 'relative text-white hover:text-green-200 px-3 py-2 text-sm font-medium transition';
+        ? 'relative text-orinoco-primary hover:text-orinoco-accent px-3 py-2 text-sm md:text-lg font-medium transition'
+        : 'relative text-white hover:text-green-200 px-3 py-2 text-sm md:text-lg font-medium transition';
 });
 </script>
 
 <template>
-    <nav
-        :class="[
+    <nav class="header-banner bg-gradient-to-br  text-white py-2 px-4  aos-init aos-animate"
+
+         :class="[
             'fixed top-0 z-50 w-full backdrop-blur-sm transition-all duration-300',
             scrolled || !isHome ? 'bg-white/95 shadow-lg' : 'bg-transparent',
         ]"
@@ -85,7 +86,7 @@ const navLinkClass = computed(() => {
 
                     <Link
                         :href="navigation.admin.href"
-                        class="flex items-center rounded-md bg-orinoco-primary px-3 py-1.5 text-sm text-white transition hover:bg-orinoco-dark"
+                        class="flex items-center rounded-md bg-orinoco-accent px-3 py-1.5 text-sm text-orinoco-dark transition hover:bg-orinoco-dark hover:text-white"
                     >
                         <font-awesome-icon
                             :icon="['fas', 'user-shield']"
@@ -154,5 +155,12 @@ const navLinkClass = computed(() => {
 </template>
 
 <style scoped>
-
+.header-banner {
+    border-radius: 0 0 40px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
 </style>

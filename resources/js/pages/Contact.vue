@@ -33,7 +33,7 @@ const scrollToForm = () => {
 >
 
 <template>
-    <GuestLayout class="bg-white">
+    <GuestLayout >
         <!-- Hero -->
         <Hero
             title="Conectemos Contigo"
@@ -52,7 +52,7 @@ const scrollToForm = () => {
             <div class="grid gap-12 lg:grid-cols-2">
                 <!-- FORMULARIO DE CONTACTO -->
                 <div data-aos="fade-right">
-                    <FormContactSection />
+                    <FormContactSection id="form" />
                 </div>
 
                 <!-- INFORMACIÓN DE CONTACTO -->

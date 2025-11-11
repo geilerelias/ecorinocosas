@@ -89,7 +89,7 @@ const buttonClass = (primary?: boolean) => [
 
 <template>
     <section
-        class="mt-14 parallax-hero relative flex h-[70vh] items-center justify-center overflow-hidden"
+        class=" parallax-hero relative flex h-[80vh] items-center justify-center overflow-hidden"
         :style="sectionStyle"
     >
         <!-- Capa superpuesta -->
@@ -115,7 +115,7 @@ const buttonClass = (primary?: boolean) => [
             <!-- Título -->
             <h1
                 v-if="title"
-                class="mb-4 text-4xl font-extrabold tracking-tight md:text-6xl"
+                class="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl xl:text-6xl"
             >
                 {{ title }}
             </h1>
@@ -155,6 +155,7 @@ const buttonClass = (primary?: boolean) => [
                 </template>
             </div>
         </div>
+
     </section>
 </template>
 
