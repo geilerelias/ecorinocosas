@@ -63,7 +63,7 @@ const toggleTheme = () => {
 
 <template>
     <nav
-        class="header-banner bg-gradient-to-br px-4 py-2 text-white"
+        class="header-banner bg-gradient-to-br px-4 py-2 text-white my-0"
         :class="[
             'fixed top-0 z-50 w-full backdrop-blur-sm transition-all duration-300',
             scrolled || !isHome

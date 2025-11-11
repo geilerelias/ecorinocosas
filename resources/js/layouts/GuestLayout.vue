@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen overflow-x-hidden bg-gray-50">
+    <div class="min-h-screen overflow-x-hidden bg-gray-50" style="margin-top: -23px;">
         <!-- Navigation reutilizable -->
         <PublicNav :scrolled="scrolled" @toggle-mobile-menu="toggleMobileMenu" :mobile-menu-open="mobileMenuOpen" />
         <PublicDrawer :scrolled="scrolled" :mobile-menu-open="mobileMenuOpen" @close-drawer="toggleMobileMenu" />
