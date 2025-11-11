@@ -42,7 +42,7 @@ const socials = [
             medida.
         </p>
         <Link
-            href="/contacto"
+            href="/contact"
             class="rounded-full bg-orinoco-primary px-6 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-105"
         >
             Contáctanos
